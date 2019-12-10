@@ -1,0 +1,24 @@
+{
+  "name": "gleuton/cartorio",
+  "description": "php",
+  "authors": [
+    {
+      "name": "Gleuton Dutra",
+      "email": "gleuton.dutra@gmail.com"
+    }
+  ],
+
+  "autoload": {
+    "psr-4": {
+      "Cartorio\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.2",
+    "ext-json": "*",
+    "ext-mysqli": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8"
+  }
+}
