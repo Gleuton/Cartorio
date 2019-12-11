@@ -3,6 +3,4 @@
  * Author: gleuton.dutra
  */
 
-$router->add('get', '/', function () {
-    return 'ola mundo';
-});
+$router->add('get', '/', 'CartorioController@index');

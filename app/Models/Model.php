@@ -7,7 +7,8 @@ namespace App\Models;
 
 
 use Cartorio\DataBase\Builder;
-use Cartorio\DataBase\ConnectionInterface;
+use Cartorio\DataBase\Connection;
+
 
 abstract class Model
 {
@@ -17,9 +18,13 @@ abstract class Model
     protected $primaryKey = 'id';
     protected $fillable = [];
 
-    public function __construct(ConnectionInterface $conn)
+    public function __construct()
     {
+        $conn = (new Connection(__DIR__.'/../../env.json'));
+        $conn->connect()->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
         $this->conn = new Builder($conn->connect());
+
         $this->conn->setTable($this->table);
         $this->conn->setPrimaryKey($this->primaryKey);
         $this->conn->setFilable($this->fillable);

@@ -64,7 +64,8 @@ class Builder
      */
     public function find(string $id)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE {$id}";
+        $sql = "SELECT * FROM {$this->table} WHERE {$this->primaryKey} = {$id}";
+
         $result = $this->connection->query($sql);
         return $result->fetchObject(__CLASS__);
     }
@@ -77,12 +78,12 @@ class Builder
     public function all(string $filter = '')
     {
         $sql = "SELECT * FROM {$this->table}";
-        if ($filter) {
+
+        if (!empty($filter)) {
             $sql .= ' ' . $filter;
         }
-
         $result = $this->connection->query($sql);
-        return $result->fetchAll(PDO::FETCH_CLASS, __CLASS__);
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
