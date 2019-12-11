@@ -4,7 +4,7 @@
  */
 
 
-use Cartorio\Connection;
+use Cartorio\DataBase\Connection;
 use Cartorio\Router;
 use Cartorio\Exceptions\HttpException;
 use Cartorio\Response;
