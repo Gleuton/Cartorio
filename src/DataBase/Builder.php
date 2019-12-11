@@ -15,21 +15,31 @@ class Builder
     private $connection;
     private $table;
     private $primaryKey = 'id';
+    private $fillable = [];
 
     /**
      * Builder constructor.
      *
-     * @param PDO    $connection
-     * @param string $table
+     * @param PDO $connection
      */
-    public function __construct(PDO $connection, string $table)
+    public function __construct(PDO $connection)
     {
         $this->connection = $connection;
-        $this->table = $table;
     }
 
     /**
-     * @param mixed $primaryKey
+     * @param string $table
+     *
+     * @return Builder
+     */
+    public function setTable($table)
+    {
+        $this->table = $table;
+        return $this;
+    }
+
+    /**
+     * @param string $primaryKey
      *
      * @return Builder
      */
@@ -37,6 +47,14 @@ class Builder
     {
         $this->primaryKey = $primaryKey;
         return $this;
+    }
+
+    /**
+     * @param array $fillable
+     */
+    public function setFilable(array $fillable)
+    {
+        $this->fillable = $fillable;
     }
 
     /**
@@ -72,6 +90,8 @@ class Builder
      */
     public function insert(array $data)
     {
+        $data = $this->fillableData($data);
+
         $columns = implode(', ', array_keys($data));
         $values = implode(', :', array_keys($data));
 
@@ -86,6 +106,7 @@ class Builder
      */
     public function update(string $id, array $data)
     {
+        $data = $this->fillableData($data);
         $columns = '';
         $data[$this->primaryKey] = $id;
 
@@ -100,9 +121,30 @@ class Builder
         $this->connection->prepare($sql)->execute($data);
     }
 
+    /**
+     * @param string $id
+     */
     public function delete(string $id)
     {
         $sql = "DELETE FROM {$this->table} WHERE {$this->primaryKey} = ?";
         $this->connection->prepare($sql)->execute([$id]);
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private function fillableData(array $data): array
+    {
+        $fillableData = [];
+
+        foreach ($data as $key => $value) {
+            if (array_key_exists($key, $this->fillable)) {
+                $fillableData[$key] = $value;
+            }
+        }
+
+        return $fillableData;
     }
 }
