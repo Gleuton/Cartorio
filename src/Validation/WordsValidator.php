@@ -26,7 +26,7 @@ class WordsValidator extends Validator
 
     public function max_size(int $length): WordsValidator
     {
-        if (mb_strlen($this->value,'utf-8') > $length) {
+        if (mb_strlen($this->value) > $length) {
             $this->addErrors('max_size');
         }
         return $this;
@@ -34,7 +34,7 @@ class WordsValidator extends Validator
 
     public function min_size(int $length): WordsValidator
     {
-        if (mb_strlen($this->value,'utf-8') < $length) {
+        if (mb_strlen($this->value) < $length) {
             $this->addErrors('min_size');
         }
         return $this;
