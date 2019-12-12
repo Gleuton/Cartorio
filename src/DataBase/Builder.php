@@ -67,7 +67,7 @@ class Builder
         $sql = "SELECT * FROM {$this->table} WHERE {$this->primaryKey} = {$id}";
 
         $result = $this->connection->query($sql);
-        return $result->fetchObject(__CLASS__);
+        return $result->fetchObject();
     }
 
     /**
@@ -83,7 +83,7 @@ class Builder
             $sql .= ' ' . $filter;
         }
         $result = $this->connection->query($sql);
-        return $result->fetchAll(PDO::FETCH_ASSOC);
+        return $result->fetchAll(PDO::FETCH_OBJ);
     }
 
     /**

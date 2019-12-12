@@ -6,6 +6,7 @@
 namespace App\Controllers;
 
 use App\Models\Cartorio;
+use App\Requests\Cartorio\InsertRequest;
 
 class CartorioController
 {
@@ -19,5 +20,15 @@ class CartorioController
     public function index(): ?string
     {
         return json_encode($this->cartorio->all());
+    }
+
+    public function find(string $id)
+    {
+        return json_encode($this->cartorio->find($id));
+    }
+
+    public function form()
+    {
+        var_dump((new InsertRequest())->post());
     }
 }

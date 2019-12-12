@@ -44,6 +44,7 @@ class Router
     {
         $url = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_STRING)
             ?? '/';
+
         if (strlen($url) > 1) {
             $url = rtrim($url, '/');
         }
