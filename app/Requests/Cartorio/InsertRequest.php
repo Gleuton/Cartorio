@@ -10,7 +10,8 @@ use Cartorio\Request;
 class InsertRequest extends Request
 {
     protected $data = [
-        'nome_fantasia' => ['integer', 'max:6', 'min:1'],
-        'senha'         => ['words', 'required', 'max_size:10', 'min_size:10']
+        'nome_fantasia' => ['string', 'max_size:100', 'min:15'],
+        'razao_social'  => ['string', 'max_size:100', 'min:15'],
+        'cnpj' => ['cnpj']
     ];
 }

@@ -34,5 +34,6 @@ class CartorioController
             return json_encode($dataForm['errors']);
         }
 
+        return true;
     }
 }
