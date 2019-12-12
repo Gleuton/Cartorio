@@ -16,5 +16,6 @@ trait ValidatorMessageTrait
         'words'    => 'Campo não deve conter valores numéricos',
         'max_size' => 'Campo muito longo',
         'min_size' => 'Campo muito curto',
+        'cnpj'     => 'CNPJ invalido'
     ];
 }
