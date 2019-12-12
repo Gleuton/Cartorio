@@ -10,7 +10,6 @@ class StringValidator extends Validator
     protected $value;
     protected $valid = true;
 
-
     public function __construct($value)
     {
         $this->value = $value;
@@ -26,7 +25,7 @@ class StringValidator extends Validator
 
     public function max_size(int $length): StringValidator
     {
-        if (mb_strlen($this->value, 'utf-8') > $length) {
+        if (mb_strlen($this->value) > $length) {
             $this->addErrors('max_size');
         }
         return $this;
@@ -34,7 +33,7 @@ class StringValidator extends Validator
 
     public function min_size(int $length): StringValidator
     {
-        if (mb_strlen($this->value, 'utf-8') < $length) {
+        if (mb_strlen($this->value) < $length) {
             $this->addErrors('min_size');
         }
         return $this;

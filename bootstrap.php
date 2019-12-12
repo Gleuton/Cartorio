@@ -3,7 +3,6 @@
  * Author: gleuton.dutra
  */
 
-
 use Cartorio\Router;
 use Cartorio\Exceptions\HttpException;
 use Cartorio\Response;

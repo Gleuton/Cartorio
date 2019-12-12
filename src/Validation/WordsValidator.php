@@ -14,7 +14,7 @@ class WordsValidator extends Validator
     public function __construct($value)
     {
         $this->value = $value;
-        if (!preg_match('/[\p{L}\s]+/', $this->value))  {
+        if (!preg_match('/[\p{L}]+/', $this->value))  {
             $this->addErrors('words');
         }
     }
