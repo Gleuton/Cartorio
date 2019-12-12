@@ -5,7 +5,7 @@
 
 namespace Cartorio\Validation;
 
-class StringValidator extends Validator
+class WordsValidator extends Validator
 {
     protected $value;
     protected $valid = true;
@@ -14,8 +14,8 @@ class StringValidator extends Validator
     public function __construct($value)
     {
         $this->value = $value;
-        if (!is_string($this->value)) {
-            $this->addErrors('string');
+        if (!preg_match('/[\p{L}\s]+/', $this->value))  {
+            $this->addErrors('words');
         }
     }
 
@@ -24,17 +24,17 @@ class StringValidator extends Validator
         return $this->valid;
     }
 
-    public function max_size(int $length): StringValidator
+    public function max_size(int $length): WordsValidator
     {
-        if (mb_strlen($this->value, 'utf-8') > $length) {
+        if (mb_strlen($this->value,'utf-8') > $length) {
             $this->addErrors('max_size');
         }
         return $this;
     }
 
-    public function min_size(int $length): StringValidator
+    public function min_size(int $length): WordsValidator
     {
-        if (mb_strlen($this->value, 'utf-8') < $length) {
+        if (mb_strlen($this->value,'utf-8') < $length) {
             $this->addErrors('min_size');
         }
         return $this;

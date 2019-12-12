@@ -11,15 +11,11 @@ class IntegerValidator extends Validator
     protected $value;
     protected $valid = true;
 
-    private $message = [
-        'integer' => 'Integer required'
-    ];
-
     public function __construct($value)
     {
         $this->value = $value;
         if (!preg_match('/[0-9]+/', $this->value)) {
-            $this->valid = false;
+            $this->addErrors('integer');
         }
     }
 
@@ -32,7 +28,7 @@ class IntegerValidator extends Validator
     public function max(int $max): IntegerValidator
     {
         if ($this->value > $max) {
-            $this->valid = false;
+            $this->addErrors('max');
         }
         return $this;
     }
@@ -40,13 +36,8 @@ class IntegerValidator extends Validator
     public function min(int $min): IntegerValidator
     {
         if ($this->value < $min) {
-            $this->valid = false;
+            $this->addErrors('min');
         }
         return $this;
-    }
-
-    public function getMessage(string $index)
-    {
-        return $this->message[$index];
     }
 }

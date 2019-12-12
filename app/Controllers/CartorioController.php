@@ -27,8 +27,12 @@ class CartorioController
         return json_encode($this->cartorio->find($id));
     }
 
-    public function form()
+    public function storage()
     {
-        var_dump((new InsertRequest())->post());
+        $dataForm = (new InsertRequest())->post();
+        if (isset($dataForm['errors'])){
+            return json_encode($dataForm['errors']);
+        }
+
     }
 }
