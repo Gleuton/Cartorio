@@ -91,12 +91,13 @@ class Builder
      */
     public function insert(array $data)
     {
+
         $data = $this->fillableData($data);
 
         $columns = implode(', ', array_keys($data));
         $values = implode(', :', array_keys($data));
 
-        $sql = "INSERT INTO {$this->table} ({$columns}) VALUES ({$values})";
+        $sql = "INSERT INTO {$this->table} ({$columns}) VALUES (:{$values})";
 
         $this->connection->prepare($sql)->execute($data);
     }
@@ -141,7 +142,7 @@ class Builder
         $fillableData = [];
 
         foreach ($data as $key => $value) {
-            if (array_key_exists($key, $this->fillable)) {
+            if (in_array($key, $this->fillable)) {
                 $fillableData[$key] = $value;
             }
         }

@@ -18,7 +18,6 @@ abstract class Request
     public function post()
     {
         $value = [];
-        $validate = [];
         foreach ($this->data as $field => $type) {
             $value[$field] = trim(filter_input(INPUT_POST, $field));
             $validator = $this->validator($type, $value[$field]);
@@ -30,6 +29,7 @@ abstract class Request
                 );
             }
         }
+
         return $validate ?? $value;
     }
 

@@ -33,7 +33,9 @@ class CartorioController
         if (isset($dataForm['errors'])){
             return json_encode($dataForm['errors']);
         }
-        var_dump($dataForm);
+
+        $this->cartorio->insert($dataForm);
+
         return true;
     }
 }
