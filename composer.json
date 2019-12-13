@@ -11,8 +11,12 @@
   "autoload": {
     "psr-4": {
       "Cartorio\\": "src/",
-      "App\\": "app/"
+      "App\\": "app/",
+      "Tests\\": "test/"
     }
+  },
+  "autoload-dev": {
+
   },
   "require": {
     "php": "^7.2",

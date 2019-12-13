@@ -88,10 +88,11 @@ class Builder
 
     /**
      * @param array $data
+     *
+     * @return bool
      */
-    public function insert(array $data)
+    public function insert(array $data): bool
     {
-
         $data = $this->fillableData($data);
 
         $columns = implode(', ', array_keys($data));
@@ -99,28 +100,31 @@ class Builder
 
         $sql = "INSERT INTO {$this->table} ({$columns}) VALUES (:{$values})";
 
-        $this->connection->prepare($sql)->execute($data);
+        return $this->connection->prepare($sql)->execute($data);
     }
 
     /**
      * @param string $id
      * @param array  $data
+     *
+     * @return bool
      */
-    public function update(string $id, array $data)
+    public function update(string $id, array $data): bool
     {
         $data = $this->fillableData($data);
         $columns = '';
-        $data[$this->primaryKey] = $id;
 
         foreach (array_keys($data) as $key) {
-            $columns .= "{$key}=:{$key}, ";
+            $columns .= "{$key}=:{$key},";
         }
+
+        $data[$this->primaryKey] = $id;
         $columns = substr($columns, 0, -1);
 
         $sql = "UPDATE {$this->table} SET {$columns} ";
-        $sql .= "WHERE {$this->primaryKey}=:{$this->primaryKey}";
+        $sql .= " WHERE {$this->primaryKey}=:{$this->primaryKey}";
 
-        $this->connection->prepare($sql)->execute($data);
+        return $this->connection->prepare($sql)->execute($data);
     }
 
     /**
