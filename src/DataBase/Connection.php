@@ -14,7 +14,9 @@ class Connection implements ConnectionInterface
 
     public function __construct(string $path)
     {
+
         $file = file_get_contents($path);
+
         $this->config = json_decode(
             $file
         );
@@ -32,7 +34,8 @@ class Connection implements ConnectionInterface
         return new PDO(
             $conn,
             $this->config->user,
-            $this->config->password
+            $this->config->password,
+            [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]
         );
     }
 }

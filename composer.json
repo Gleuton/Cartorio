@@ -11,14 +11,19 @@
   "autoload": {
     "psr-4": {
       "Cartorio\\": "src/",
-      "App\\": "app/"
+      "App\\": "app/",
+      "Tests\\": "test/"
     }
+  },
+  "autoload-dev": {
+
   },
   "require": {
     "php": "^7.2",
     "ext-json": "*",
     "ext-mysqli": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-mbstring": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^8"
