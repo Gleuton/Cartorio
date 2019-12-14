@@ -1,30 +1,30 @@
 <?php
 /**
- * Author: gleuton.dutra
+ * Author: gleuton.pereira
  */
 
 namespace App\Controllers;
 
 use App\Models\Cartorio;
-use App\Requests\Cartorio\InsertRequest;
+use App\Requests\Tabeliao\InsertRequest;
 
-class CartorioController
+class TabeliaoController
 {
-    private $cartorio;
+    private $tabeliao;
 
     public function __construct()
     {
-        $this->cartorio = new Cartorio();
+        $this->tabeliao = new Cartorio();
     }
 
     public function index(): ?string
     {
-        return json_encode($this->cartorio->all());
+        return json_encode($this->tabeliao->all());
     }
 
     public function find(string $id)
     {
-        return json_encode($this->cartorio->find($id));
+        return json_encode($this->tabeliao->find($id));
     }
 
     public function storage()
@@ -34,7 +34,7 @@ class CartorioController
             return json_encode($dataForm['errors']);
         }
 
-        $this->cartorio->insert($dataForm);
+        $this->tabeliao->insert($dataForm);
 
         return true;
     }
