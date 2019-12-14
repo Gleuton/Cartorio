@@ -5,37 +5,40 @@
 
 namespace App\Controllers;
 
-use App\Models\Cartorio;
-use App\Requests\Cartorio\InsertRequest;
-use App\Requests\Cartorio\UpdateRequest;
+use App\Models\Tabeliao;
+use App\Requests\Tabeliao\UpdateRequest;
+use App\Requests\Tabeliao\InsertRequest;
 
-class CartorioController
+class TabeliaoController
 {
-    private $cartorio;
+    private $tabeliao;
 
     public function __construct()
     {
-        $this->cartorio = new Cartorio();
+        $this->tabeliao = new Tabeliao();
     }
 
     public function index(): array
     {
-        return $this->cartorio->all();
+        return $this->tabeliao->all();
     }
 
     public function show(string $id)
     {
-        return $this->cartorio->find($id);
+        return $this->tabeliao->find($id);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function storage()
     {
         $dataForm = (new InsertRequest())->post();
-        if (isset($dataForm['errors'])){
+        if (isset($dataForm['errors'])) {
             return $dataForm['errors'];
         }
 
-        return $this->cartorio->insert($dataForm);
+        return $this->tabeliao->insert($dataForm);
     }
 
     public function update(string $id)
@@ -44,6 +47,6 @@ class CartorioController
         if (isset($dataForm['errors'])){
             return $dataForm['errors'];
         }
-        return $this->cartorio->update($id, $dataForm);
+        return $this->tabeliao->update($id, $dataForm);
     }
 }

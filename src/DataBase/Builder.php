@@ -109,7 +109,7 @@ class Builder
      *
      * @return bool
      */
-    public function update(string $id, array $data): bool
+    public function update(string $id, array $data)
     {
         $data = $this->fillableData($data);
         $columns = '';
