@@ -7,7 +7,7 @@ namespace App\Requests\Tabeliao;
 
 use Cartorio\Request;
 
-class InsertRequest extends Request
+class UpdateRequest extends Request
 {
     protected $data = [
         'nome'          => ['string', 'required', 'max_size:90', 'min_size:8'],
