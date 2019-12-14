@@ -8,16 +8,20 @@ namespace Cartorio\DataBase;
 
 use PDO;
 
-class Connection implements ConnectionInterface
+class Connection
 {
-    private $config;
 
-    public function __construct(string $path)
+    private static $instance = null;
+
+    private function __construct()
     {
+    }
 
-        $file = file_get_contents($path);
+    private static function config()
+    {
+        $file = file_get_contents(__DIR__ . '/../../env.json');
 
-        $this->config = json_decode(
+        return json_decode(
             $file
         );
     }
@@ -25,17 +29,20 @@ class Connection implements ConnectionInterface
     /**
      * @return PDO
      */
-    public function connect(): PDO
+    public static function connect(): PDO
     {
-        $conn = "{$this->config->connection}:";
-        $conn .= "host={$this->config->host};";
-        $conn .= "dbname={$this->config->dbname};";
+        $conn = "mysql:";
+        $conn .= "host=" . self::config()->host . ";";
+        $conn .= "dbname=" . self::config()->dbname . ";";
 
-        return new PDO(
-            $conn,
-            $this->config->user,
-            $this->config->password,
-            [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]
-        );
+        if (is_null(self::$instance)) {
+            return new PDO(
+                $conn,
+                self::config()->user,
+                self::config()->password,
+                [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]
+            );
+        }
+        return self::$instance;
     }
 }

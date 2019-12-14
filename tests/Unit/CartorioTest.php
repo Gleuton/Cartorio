@@ -26,8 +26,8 @@ class CartorioTest extends TestCase
 
     public function testInsertDuplicateId()
     {
-        $response = $this->cartorio->insert($this->data);
-        $this->assertFalse($response);
+        $this->expectException(\PDOException::class);
+        $this->cartorio->insert($this->data);
     }
 
     public function testFind()

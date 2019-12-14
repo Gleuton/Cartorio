@@ -13,20 +13,21 @@ services:
     depends_on:
       - mysql-cartorio
     environment:
-      - APACHE_RUN_USER=#1000
-      - APACHE_RUN_GROUP=#1000
+      APACHE_RUN_USER: 'www'
+    sysctls:
+      net.ipv4.ip_unprivileged_port_start: '0'
     networks:
       - development-network
 
   mysql-cartorio:
     image: mysql:5.7
     volumes:
-      - .docker/dbdata:/var/lib/mysql
+      - dbdata:/var/lib/mysql
     environment:
-      - "MYSQL_DATABASE=cartorio"
-      - "MYSQL_USER=developer"
-      - "MYSQL_PASSWORD=developer"
-      - "MYSQL_ROOT_PASSWORD=developer"
+      MYSQL_DATABASE: "cartorio"
+      MYSQL_USER: "developer"
+      MYSQL_PASSWORD: "developer"
+      MYSQL_ROOT_PASSWORD: "developer"
     ports:
       - "33061:3306"
     networks:
@@ -34,3 +35,7 @@ services:
 
 networks:
   development-network:
+
+volumes:
+  dbdata:
+

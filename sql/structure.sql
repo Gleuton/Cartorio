@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `cartorio`.`tb_cartorio` (
   `cnpj` VARCHAR(14) NOT NULL,
   `ativo` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`cnpj`),
-  UNIQUE INDEX `cnpj_UNIQUE` (`cnpj` ASC) VISIBLE)
+  UNIQUE INDEX `cnpj_UNIQUE` (`cnpj` ASC))
 ENGINE = InnoDB;
 
 
@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS `cartorio`.`tb_contato` (
   `cartorio_cnpj` VARCHAR(14) NOT NULL,
   `ativo` TINYINT UNSIGNED NULL DEFAULT 1,
   PRIMARY KEY (`id_contato`),
-  INDEX `fk_tb_contato_tb_cartorio_idx` (`cartorio_cnpj` ASC) VISIBLE,
-  UNIQUE INDEX `id_contato_UNIQUE` (`id_contato` ASC) VISIBLE,
+  INDEX `fk_tb_contato_tb_cartorio_idx` (`cartorio_cnpj` ASC),
+  UNIQUE INDEX `id_contato_UNIQUE` (`id_contato` ASC) ,
   CONSTRAINT `fk_tb_contato_tb_cartorio`
     FOREIGN KEY (`cartorio_cnpj`)
     REFERENCES `cartorio`.`tb_cartorio` (`cnpj`)
@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS `cartorio`.`tb_tabeliao` (
   `cartorio_cnpj` VARCHAR(14) NOT NULL,
   `ativo` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_tabeliao`),
-  INDEX `fk_tb_tabeliao_tb_cartorio1_idx` (`cartorio_cnpj` ASC) VISIBLE,
-  UNIQUE INDEX `id_tabeliao_UNIQUE` (`id_tabeliao` ASC) VISIBLE,
+  INDEX `fk_tb_tabeliao_tb_cartorio1_idx` (`cartorio_cnpj` ASC) ,
+  UNIQUE INDEX `id_tabeliao_UNIQUE` (`id_tabeliao` ASC) ,
   CONSTRAINT `fk_tb_tabeliao_tb_cartorio1`
     FOREIGN KEY (`cartorio_cnpj`)
     REFERENCES `cartorio`.`tb_cartorio` (`cnpj`)
@@ -66,8 +66,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `cartorio`.`tb_estado` (
   `estado` VARCHAR(45) NOT NULL,
   `uf` VARCHAR(2) NOT NULL,
-  UNIQUE INDEX `estado_UNIQUE` (`estado` ASC) VISIBLE,
-  UNIQUE INDEX `uf_UNIQUE` (`uf` ASC) VISIBLE,
+  UNIQUE INDEX `estado_UNIQUE` (`estado` ASC) ,
+  UNIQUE INDEX `uf_UNIQUE` (`uf` ASC) ,
   PRIMARY KEY (`uf`))
 ENGINE = InnoDB;
 
@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS `cartorio`.`tb_cidade` (
   `cidade` VARCHAR(50) NOT NULL,
   `estado_uf` VARCHAR(2) NOT NULL,
   PRIMARY KEY (`id_cidade`),
-  UNIQUE INDEX `id_cidade_UNIQUE` (`id_cidade` ASC) VISIBLE,
-  INDEX `fk_tb_cidade_tb_estado1_idx` (`estado_uf` ASC) VISIBLE,
+  UNIQUE INDEX `id_cidade_UNIQUE` (`id_cidade` ASC) ,
+  INDEX `fk_tb_cidade_tb_estado1_idx` (`estado_uf` ASC) ,
   CONSTRAINT `fk_tb_cidade_tb_estado1`
     FOREIGN KEY (`estado_uf`)
     REFERENCES `cartorio`.`tb_estado` (`uf`)
@@ -102,9 +102,9 @@ CREATE TABLE IF NOT EXISTS `cartorio`.`tb_endereco` (
   `ativo` TINYINT NOT NULL DEFAULT 1,
   `cidade_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id_endereco`),
-  INDEX `fk_tb_endereco_tb_cartorio1_idx` (`cartorio_cnpj` ASC) VISIBLE,
-  UNIQUE INDEX `id_endereco_UNIQUE` (`id_endereco` ASC) VISIBLE,
-  INDEX `fk_tb_endereco_tb_cidade1_idx` (`cidade_id` ASC) VISIBLE,
+  INDEX `fk_tb_endereco_tb_cartorio1_idx` (`cartorio_cnpj` ASC) ,
+  UNIQUE INDEX `id_endereco_UNIQUE` (`id_endereco` ASC) ,
+  INDEX `fk_tb_endereco_tb_cidade1_idx` (`cidade_id` ASC) ,
   CONSTRAINT `fk_tb_endereco_tb_cartorio1`
     FOREIGN KEY (`cartorio_cnpj`)
     REFERENCES `cartorio`.`tb_cartorio` (`cnpj`)

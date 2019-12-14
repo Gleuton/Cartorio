@@ -21,7 +21,6 @@
   "require": {
     "php": "^7.2",
     "ext-json": "*",
-    "ext-mysqli": "*",
     "ext-pdo": "*",
     "ext-mbstring": "*"
   },

@@ -20,13 +20,13 @@ abstract class Model
 
     public function __construct()
     {
-        $conn = (new Connection(__DIR__ . '/../../env.json'));
-        $conn->connect()->setAttribute(
+        $conn = Connection::connect();
+        $conn->setAttribute(
             \PDO::ATTR_ERRMODE,
             \PDO::ERRMODE_EXCEPTION
         );
 
-        $this->conn = new Builder($conn->connect());
+        $this->conn = new Builder($conn);
 
         $this->conn->setTable($this->table);
         $this->conn->setPrimaryKey($this->primaryKey);

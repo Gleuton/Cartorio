@@ -18,14 +18,6 @@ class CartorioControllerTest extends TestCase
         $this->cartorio = new CartorioController();
     }
 
-    public function testIndex()
-    {
-        $response = json_decode($this->cartorio->index());
-        $this->assertnotEmpty($response);
-
-        $this->assertIsArray($response);
-    }
-
     public function testFindIdNotfound()
     {
         $response = json_decode($this->cartorio->find(123));
