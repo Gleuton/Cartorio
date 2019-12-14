@@ -1,11 +1,12 @@
 <?php
 /**
- * Author: gleuton.pereira
+ * Author: gleuton.dutra
  */
 
 namespace App\Controllers;
 
-use App\Models\Cartorio;
+use App\Models\Tabeliao;
+use App\Requests\Tabeliao\UpdateRequest;
 use App\Requests\Tabeliao\InsertRequest;
 
 class TabeliaoController
@@ -14,28 +15,38 @@ class TabeliaoController
 
     public function __construct()
     {
-        $this->tabeliao = new Cartorio();
+        $this->tabeliao = new Tabeliao();
     }
 
-    public function index(): ?string
+    public function index(): array
     {
-        return json_encode($this->tabeliao->all());
+        return $this->tabeliao->all();
     }
 
-    public function find(string $id)
+    public function show(string $id)
     {
-        return json_encode($this->tabeliao->find($id));
+        return $this->tabeliao->find($id);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function storage()
     {
         $dataForm = (new InsertRequest())->post();
-        if (isset($dataForm['errors'])){
-            return json_encode($dataForm['errors']);
+        if (isset($dataForm['errors'])) {
+            return $dataForm['errors'];
         }
 
-        $this->tabeliao->insert($dataForm);
+        return $this->tabeliao->insert($dataForm);
+    }
 
-        return true;
+    public function update(string $id)
+    {
+        $dataForm = (new UpdateRequest())->post();
+        if (isset($dataForm['errors'])){
+            return $dataForm['errors'];
+        }
+        return $this->tabeliao->update($id, $dataForm);
     }
 }

@@ -10,6 +10,7 @@ class Response
 {
     public function __invoke($action, $params)
     {
+        header('Content-Type: application/json');
         if (is_string($action)) {
             $action = explode('@', $action);
             $class = '\\App\Controllers\\' . $action[0];

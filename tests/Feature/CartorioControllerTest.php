@@ -20,7 +20,7 @@ class CartorioControllerTest extends TestCase
 
     public function testFindIdNotfound()
     {
-        $response = json_decode($this->cartorio->find(123));
+        $response = $this->cartorio->find(123);
 
         $this->assertFalse($response);
     }

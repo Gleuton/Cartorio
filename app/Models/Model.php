@@ -69,7 +69,7 @@ abstract class Model
      *
      * @return bool
      */
-    public function update(string $id, array $data): bool
+    public function update(string $id, array $data)
     {
         return $this->conn->update($id, $data);
     }

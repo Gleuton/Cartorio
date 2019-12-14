@@ -7,6 +7,7 @@ namespace App\Controllers;
 
 use App\Models\Cartorio;
 use App\Requests\Cartorio\InsertRequest;
+use App\Requests\Cartorio\UpdateRequest;
 
 class CartorioController
 {
@@ -17,25 +18,32 @@ class CartorioController
         $this->cartorio = new Cartorio();
     }
 
-    public function index(): ?string
+    public function index(): array
     {
-        return json_encode($this->cartorio->all());
+        return $this->cartorio->all();
     }
 
-    public function find(string $id)
+    public function show(string $id)
     {
-        return json_encode($this->cartorio->find($id));
+        return $this->cartorio->find($id);
     }
 
     public function storage()
     {
         $dataForm = (new InsertRequest())->post();
         if (isset($dataForm['errors'])){
-            return json_encode($dataForm['errors']);
+            return $dataForm['errors'];
         }
 
-        $this->cartorio->insert($dataForm);
+        return $this->cartorio->insert($dataForm);
+    }
 
-        return true;
+    public function update(string $id)
+    {
+        $dataForm = (new UpdateRequest())->post();
+        if (isset($dataForm['errors'])){
+            return $dataForm['errors'];
+        }
+        return $this->cartorio->update($id, $dataForm);
     }
 }
