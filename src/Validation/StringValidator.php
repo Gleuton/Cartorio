@@ -13,7 +13,7 @@ class StringValidator extends Validator
     public function __construct($value)
     {
         $this->value = $value;
-        if (!is_string($this->value)) {
+        if (!empty($value) && !is_string($this->value)) {
             $this->addErrors('string');
         }
     }

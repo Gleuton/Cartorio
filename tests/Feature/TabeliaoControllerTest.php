@@ -5,22 +5,22 @@
 
 namespace Tests\Feature;
 
-use App\Controllers\CartorioController;
+use App\Controllers\TabeliaoController;
 use PHPUnit\Framework\TestCase;
 
-class CartorioControllerTest extends TestCase
+class TabeliaoControllerTest extends TestCase
 {
 
-    protected $cartorio;
+    protected $tabeliao;
 
     protected function setUp(): void
     {
-        $this->cartorio = new CartorioController();
+        $this->tabeliao = new TabeliaoController();
     }
 
     public function testFindIdNotfound()
     {
-        $response = $this->cartorio->show(123);
+        $response = $this->tabeliao->show(1);
 
         $this->assertFalse($response);
     }

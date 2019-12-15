@@ -1,11 +1,11 @@
 <?php
 /**
- * Author: gleuton.pereira
+ * Author: gleuton.dutra
  */
 
 namespace Cartorio\Validation;
 
-class CnpjValidator extends Validator
+class FoneValidator extends Validator
 {
 
     protected $value;
@@ -14,8 +14,8 @@ class CnpjValidator extends Validator
     public function __construct($value)
     {
         $this->value = $value;
-        if (!empty($value) && !preg_match('/^[0-9]{14}$/', $this->value)) {
-            $this->addErrors('cnpj');
+        if (!empty($value) && !preg_match('/^[0-9]{10,11}$/', $this->value)) {
+            $this->addErrors('fone');
         }
     }
 

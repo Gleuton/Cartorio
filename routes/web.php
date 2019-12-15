@@ -14,8 +14,15 @@ $router->add('post', '/cartorio/(\d+)','CartorioController@update');
 /**
  * tabelião
  */
-
 $router->add('get', '/tabeliao', 'TabeliaoController@index');
 $router->add('get', '/tabeliao/(\d+)','TabeliaoController@show');
 $router->add('post', '/tabeliao','TabeliaoController@storage');
 $router->add('post', '/tabeliao/(\d+)','TabeliaoController@update');
+
+/**
+ * contato
+ */
+$router->add('get', '/contato', 'ContatoController@index');
+$router->add('get', '/contato/(\d+)','ContatoController@show');
+$router->add('post', '/contato','ContatoController@storage');
+$router->add('post', '/contato/(\d+)','ContatoController@update');
