@@ -9,6 +9,7 @@ use Cartorio\Response;
 
 require_once __DIR__ . '/vendor/autoload.php';
 $router = new Router();
+require_once __DIR__ . '/routes/api.php';
 require_once __DIR__ . '/routes/web.php';
 
 try {
