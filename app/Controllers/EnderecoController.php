@@ -27,6 +27,11 @@ class EnderecoController
         return $this->endereco->find($id);
     }
 
+    public function enderecoCartorio(string $cnpj)
+    {
+        return $this->endereco->findByCartorio($cnpj);
+    }
+
     public function storage()
     {
         $dataForm = (new Request())->post();

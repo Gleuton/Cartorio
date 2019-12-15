@@ -20,7 +20,7 @@ class Tabeliao extends Model
 
     public function findByCartorio(string $cnpj)
     {
-        return $this->all(
+        return $this->findBy(
             'WHERE cartorio_cnpj = ' . $cnpj.
             ' AND ativo = 1'
         );

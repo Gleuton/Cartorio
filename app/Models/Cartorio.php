@@ -23,7 +23,7 @@ class Cartorio extends Model
         $tabeliao = new Tabeliao();
         $cartorios = parent::all($filter);
         foreach ($cartorios as $cartorio) {
-            $cartorio->tabeliao = $tabeliao->findByCartorio($cartorio->cnpj)[0]->nome ?? '';
+            $cartorio->tabeliao = $tabeliao->findByCartorio($cartorio->cnpj)->nome ?? '';
         }
         return $cartorios;
     }

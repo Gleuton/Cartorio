@@ -48,4 +48,10 @@ class ContatoController
         }
         return $this->contato->update($id, $dataForm);
     }
+
+    public function contatoCartorio($cnpj)
+    {
+
+        return $this->contato->findByCartorio($cnpj);
+    }
 }

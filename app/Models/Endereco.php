@@ -20,4 +20,21 @@ class Endereco extends Model
         'cidade_id',
         'ativo'
     ];
+
+    public function findByCartorio(string $cnpj)
+    {
+        $modelCidade = new Cidade();
+        $endereco = $this->findBy(
+            'WHERE cartorio_cnpj = ' . $cnpj.
+            ' AND ativo = 1'
+        );
+        if(!$endereco){
+            return 'false';
+        }
+        $cidade = $modelCidade->find($endereco->cidade_id);
+        $endereco->cidade = $cidade->cidade;
+        $endereco->uf = $cidade->estado_uf;
+
+        return $endereco;
+    }
 }

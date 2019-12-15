@@ -23,6 +23,7 @@ $router->add('post', '/tabeliao/(\d+)','TabeliaoController@update');
  * contato
  */
 $router->add('get', '/contato', 'ContatoController@index');
+$router->add('get', '/contato/cartorio/(\d+)', 'ContatoController@contatoCartorio');
 $router->add('get', '/contato/(\d+)','ContatoController@show');
 $router->add('post', '/contato','ContatoController@storage');
 $router->add('post', '/contato/(\d+)','ContatoController@update');
@@ -31,6 +32,7 @@ $router->add('post', '/contato/(\d+)','ContatoController@update');
 * endereco
 */
 $router->add('get', '/endereco', 'EnderecoController@index');
+$router->add('get', '/endereco/cartorio/(\d+)', 'EnderecoController@enderecoCartorio');
 $router->add('get', '/endereco/(\d+)','EnderecoController@show');
 $router->add('post', '/endereco','EnderecoController@storage');
 $router->add('post', '/endereco/(\d+)','EnderecoController@update');
