@@ -70,6 +70,16 @@ class Builder
         return $result->fetchObject();
     }
 
+    public function findBy(string $filters)
+    {
+        $sql = "SELECT * FROM {$this->table}";
+
+        $sql .= ' ' . $filters;
+
+        $result = $this->connection->query($sql);
+        return $result->fetchObject();
+    }
+
     /**
      * @param string $filter
      *
@@ -82,6 +92,7 @@ class Builder
         if (!empty($filter)) {
             $sql .= ' ' . $filter;
         }
+
         $result = $this->connection->query($sql);
         return $result->fetchAll(PDO::FETCH_OBJ);
     }

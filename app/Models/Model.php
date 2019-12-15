@@ -43,6 +43,10 @@ abstract class Model
         return $this->conn->find($id);
     }
 
+    public function findBy(string $filters)
+    {
+        return $this->conn->findBy($filters);
+    }
     /**
      * @param string $filter
      *
