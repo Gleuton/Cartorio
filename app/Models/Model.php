@@ -79,5 +79,4 @@ abstract class Model
         $this->conn->delete($id);
     }
 
-
 }

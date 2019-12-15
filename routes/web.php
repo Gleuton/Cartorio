@@ -8,5 +8,5 @@ use Cartorio\View;
  * index
  */
 $router->add('get', '/', function () {
-    return View::render('layouts');
+    return View::render('layout');
 });

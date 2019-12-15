@@ -17,4 +17,12 @@ class Tabeliao extends Model
         'cartorio_cnpj',
         'ativo'
     ];
+
+    public function findByCartorio(string $cnpj)
+    {
+        return $this->all(
+            'WHERE cartorio_cnpj = ' . $cnpj.
+            ' AND ativo = 1'
+        );
+    }
 }

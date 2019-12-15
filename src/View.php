@@ -15,7 +15,7 @@ class View
      * @return string
      * @throws HttpException
      */
-    public static function render(string $file, $path = __DIR__ . '/../public/')
+    public static function render(string $file, $path = __DIR__ . '/../views/')
     {
         header("Content-Type: text/html");
         $htmlPath = $path . $file . '.html';

@@ -17,4 +17,14 @@ class Cartorio extends Model
         'cnpj',
         'ativo'
     ];
+
+    public function all(string $filter = '')
+    {
+        $tabeliao = new Tabeliao();
+        $cartorios = parent::all($filter);
+        foreach ($cartorios as $cartorio) {
+            $cartorio->tabeliao = $tabeliao->findByCartorio($cartorio->cnpj)[0]->nome ?? '';
+        }
+        return $cartorios;
+    }
 }
