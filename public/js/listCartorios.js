@@ -33,9 +33,9 @@ function listCartorios () {
 
   function acoes (cnpj) {
     return '<div class="btn-group" role="group">' +
-      '<button type="button" class="btn btn-default" onclick="endereco(\''+cnpj+'\')">Endereço</button>' +
-      '<button type="button" class="btn btn-default" onclick="contato(\''+cnpj+'\')">Contato</button>' +
-      '<button type="button" class="btn btn-default" onclick="editar(\''+cnpj+'\')">Editar</button>' +
+      '<button type="button" class="btn btn-primary" onclick="endereco(\''+cnpj+'\')">Endereço</button>' +
+      '<button type="button" class="btn btn-info" onclick="contato(\''+cnpj+'\')">Contato</button>' +
+      '<button type="button" class="btn btn-primary" onclick="editar(\''+cnpj+'\')">Editar</button>' +
       '</div>'
   }
 
