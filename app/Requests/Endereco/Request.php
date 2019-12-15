@@ -11,9 +11,9 @@ class Request extends AbstractRequest
 {
     protected $data = [
         'cep'           => ['cep'],
-        'endereco'      => ['string', 'required', 'max_size:100', 'min_size:15'],
-        'bairro'        => ['string', 'required', 'max_size:100', 'min_size:15'],
+        'endereco'      => ['string', 'required', 'max_size:90', 'min_size:2'],
+        'bairro'        => ['string', 'required', 'max_size:10', 'min_size:2'],
         'cartorio_cnpj' => ['cnpj', 'required'],
-        'cidade_id'     => ['ibge']
+        'cidade_id'     => ['string', 'required', 'max_size:7', 'min_size:7'],
     ];
 }
