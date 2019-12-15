@@ -8,6 +8,7 @@ function template (data, html) {
 
 function modal (titulo, body, footer) {
   let myModal = $('#myModal')
+  myModal.html('')
   let modal = {
     'title': titulo,
     'body': body,
@@ -15,7 +16,6 @@ function modal (titulo, body, footer) {
   }
   $.get('/modal', function (data) {
     data = template(modal, data)
-
     myModal.html(data)
   })
   myModal.modal()

@@ -18,4 +18,16 @@ class Contato extends Model
         'cartorio_cnpj',
         'ativo'
     ];
+
+    public function findByCartorio($cnpj)
+    {
+        $contato = $this->findBy(
+            'WHERE cartorio_cnpj = ' . $cnpj.
+            ' AND ativo = 1'
+        );
+        if(!$contato){
+            return 'false';
+        }
+        return $contato;
+    }
 }

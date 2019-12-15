@@ -23,6 +23,7 @@ $router->add('post', '/tabeliao/(\d+)','TabeliaoController@update');
  * contato
  */
 $router->add('get', '/contato', 'ContatoController@index');
+$router->add('get', '/contato/cartorio/(\d+)', 'ContatoController@contatoCartorio');
 $router->add('get', '/contato/(\d+)','ContatoController@show');
 $router->add('post', '/contato','ContatoController@storage');
 $router->add('post', '/contato/(\d+)','ContatoController@update');

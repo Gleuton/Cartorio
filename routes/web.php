@@ -20,3 +20,7 @@ $router->add('get','/modal', function () {
 $router->add('get','/dtlEndereco', function () {
     return View::render('endereco/show');
 });
+
+$router->add('get','/dtlContato', function () {
+    return View::render('contato/show');
+});
