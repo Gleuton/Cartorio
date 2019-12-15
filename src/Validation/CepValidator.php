@@ -1,11 +1,11 @@
 <?php
 /**
- * Author: gleuton.dutra
+ * Author: gleuton.pereira
  */
 
 namespace Cartorio\Validation;
 
-class FoneValidator extends Validator
+class CepValidator extends Validator
 {
 
     protected $value;
@@ -14,8 +14,9 @@ class FoneValidator extends Validator
     public function __construct($value)
     {
         $this->value = preg_replace("/[^0-9]/", "", $value);
-        if (!empty($value) && !preg_match('/^[0-9]{10,11}$/', $this->value)) {
-            $this->addErrors('fone');
+
+        if (!empty($value) && !preg_match('/^[0-9]{8}$/', $this->value)) {
+            $this->addErrors('cep');
         }
     }
 

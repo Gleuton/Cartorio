@@ -5,9 +5,9 @@
 
 namespace App\Requests\Contato;
 
-use Cartorio\Request;
+use Cartorio\Request as AbstractRequest;
 
-class InsertRequest extends Request
+class Request extends AbstractRequest
 {
     protected $data = [
         'fone'          => ['fone'],

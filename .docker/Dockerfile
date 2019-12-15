@@ -41,9 +41,5 @@ RUN a2enmod rewrite
 #Enable sigtv.conf
 RUN a2ensite cartorio.conf
 
-RUN groupadd -r www && useradd -r -g www www
-
-RUN chown -R www:www /var/www
-
 #Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

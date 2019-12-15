@@ -5,39 +5,36 @@
 
 namespace App\Controllers;
 
-use App\Models\Tabeliao;
-use App\Requests\Tabeliao\Request;
+use App\Models\Endereco;
+use App\Requests\Endereco\Request;
 
-class TabeliaoController
+class EnderecoController
 {
-    private $tabeliao;
+    private $endereco;
 
     public function __construct()
     {
-        $this->tabeliao = new Tabeliao();
+        $this->endereco = new Endereco();
     }
 
     public function index(): array
     {
-        return $this->tabeliao->all();
+        return $this->endereco->all();
     }
 
     public function show(string $id)
     {
-        return $this->tabeliao->find($id);
+        return $this->endereco->find($id);
     }
 
-    /**
-     * @return bool|mixed
-     */
     public function storage()
     {
         $dataForm = (new Request())->post();
-        if (isset($dataForm['errors'])) {
+        if (isset($dataForm['errors'])){
             return $dataForm['errors'];
         }
 
-        return $this->tabeliao->insert($dataForm);
+        return $this->endereco->insert($dataForm);
     }
 
     public function update(string $id)
@@ -46,6 +43,6 @@ class TabeliaoController
         if (isset($dataForm['errors'])){
             return $dataForm['errors'];
         }
-        return $this->tabeliao->update($id, $dataForm);
+        return $this->endereco->update($id, $dataForm);
     }
 }

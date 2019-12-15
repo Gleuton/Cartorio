@@ -5,9 +5,9 @@
 
 namespace App\Requests\Tabeliao;
 
-use Cartorio\Request;
+use Cartorio\Request as AbstracRequest;
 
-class InsertRequest extends Request
+class Request extends AbstracRequest
 {
     protected $data = [
         'nome'          => ['string', 'required', 'max_size:90', 'min_size:8'],

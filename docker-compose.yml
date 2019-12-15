@@ -1,6 +1,5 @@
 version: "3.2"
 services:
-
   php-cartorio:
     container_name: php-apache
     image: php:7.2
@@ -13,7 +12,7 @@ services:
     depends_on:
       - mysql-cartorio
     environment:
-      APACHE_RUN_USER: 'www'
+      APACHE_RUN_USER: '#1000'
     sysctls:
       net.ipv4.ip_unprivileged_port_start: '0'
     networks:
