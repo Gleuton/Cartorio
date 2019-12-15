@@ -15,6 +15,7 @@ class Endereco extends Model
         'id_endereco',
         'endereco',
         'cep',
+        'bairro',
         'cartorio_cnpj',
         'cidade_id',
         'ativo'

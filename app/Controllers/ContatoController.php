@@ -6,8 +6,7 @@
 namespace App\Controllers;
 
 use App\Models\Contato;
-use App\Requests\Contato\UpdateRequest;
-use App\Requests\Contato\InsertRequest;
+use App\Requests\Contato\Request;
 
 class ContatoController
 {
@@ -33,7 +32,7 @@ class ContatoController
      */
     public function storage()
     {
-        $dataForm = (new InsertRequest())->post();
+        $dataForm = (new Request())->post();
         if (isset($dataForm['errors'])) {
             return $dataForm['errors'];
         }
@@ -43,7 +42,7 @@ class ContatoController
 
     public function update(string $id)
     {
-        $dataForm = (new UpdateRequest())->post();
+        $dataForm = (new Request())->post();
         if (isset($dataForm['errors'])){
             return $dataForm['errors'];
         }
