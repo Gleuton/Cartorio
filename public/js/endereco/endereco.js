@@ -5,10 +5,10 @@ function endereco (cartorio_cnpj) {
   })
 
   function enderecoModal (url, templateHtml) {
-    let footer = '<button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>';
+    let footer = btnExit();
 
     $.getJSON(url, function (data) {
-      let body = 'Endereção não cadastrado'
+      let body = 'Endereço não cadastrado'
       if (data){
         body = template(data, templateHtml)
       }

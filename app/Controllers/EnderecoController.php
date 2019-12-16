@@ -34,9 +34,11 @@ class EnderecoController
 
     public function storage()
     {
+
         $dataForm = (new Request())->post();
+
         if (isset($dataForm['errors'])){
-            return $dataForm['errors'];
+            return $dataForm;
         }
 
         return $this->endereco->insert($dataForm);
@@ -46,7 +48,7 @@ class EnderecoController
     {
         $dataForm = (new Request())->post();
         if (isset($dataForm['errors'])){
-            return $dataForm['errors'];
+            return $dataForm;
         }
         return $this->endereco->update($id, $dataForm);
     }

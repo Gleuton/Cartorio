@@ -30,9 +30,15 @@ function submit (url, form, callback) {
         let error = $('#' + key).siblings('.error')
         error.html(value)
       })
-      return 0;
+      return 0
     }
-    callback(serialize)
+    if (callback) {
+      callback(serialize)
+    }
   })
 
+}
+
+function btnExit () {
+  return '<button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>'
 }

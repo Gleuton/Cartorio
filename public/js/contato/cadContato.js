@@ -2,7 +2,6 @@ function cadContato (cnpj) {
   $.get('/contato/formCad', function (data) {
     let footer = '<button type="button" class="btn btn-success" ' +
       'onclick="submitContato(\'' + cnpj + '\')">Avançar</button>'
-    footer += '<button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>'
 
     data = data.replace('{{ cnpj }}', cnpj)
     modal('Contato', data, footer)
@@ -11,9 +10,10 @@ function cadContato (cnpj) {
 
 function submitContato(cnpj)
 {
+  let fone = $("#fone")
+  fone.val(fone.val().replace(/[^\d]+/g,''))
   let next = function () {
-    console.log(cnpj)
-    //cadCartorio(cnpj);
+    cadEndereco(cnpj);
   }
   submit('/contato','#formCadContato', next)
 }

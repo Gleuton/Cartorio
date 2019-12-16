@@ -1,0 +1,42 @@
+<form id="formCadEndereco">
+    <input type="hidden" name="cartorio_cnpj" id="cartorio_cnpj" value="{{ cnpj }}">
+    <div class="form-group">
+        <label for="endereco">Endereço:</label>
+        <span class="error"></span>
+        <input type="text" class="form-control" name="endereco" id="endereco">
+    </div>
+    <div class="form-group">
+        <label for="bairro">Bairro:</label>
+        <span class="error"></span>
+        <input type="text" class="form-control" name="bairro" id="bairro">
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="cep">CEP:</label>
+                <span class="error"></span>
+                <input type="text" class="form-control" name="cep" id="cep">
+            </div>
+            <div class="col-md-3">
+                <label for="ufSelect">UF:</label>
+                <select class="form-control" id="ufSelect">
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="cidadeSelect">Cidade:</label>
+                <select class="form-control" id="cidadeSelect" name="cidade_id">
+                </select>
+            </div>
+        </div>
+
+    </div>
+</form>
+<script type="application/javascript">
+  optionsEstados()
+  optionsCidades('AC')
+  $('#ufSelect').change(function () {
+    let uf = $(this).children('option:selected').val()
+    optionsCidades(uf)
+  })
+</script>

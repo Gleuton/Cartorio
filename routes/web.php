@@ -36,3 +36,7 @@ $router->add('get','/tabeliao/formCad', function () {
 $router->add('get','/contato/formCad', function () {
     return View::render('contato/formCad');
 });
+
+$router->add('get','/endereco/formCad', function () {
+    return View::render('endereco/formCad');
+});
