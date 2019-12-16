@@ -62,7 +62,7 @@ abstract class Model
      *
      * @return bool
      */
-    public function insert(array $data): bool
+    public function insert(array $data)
     {
         return $this->conn->insert($data);
     }

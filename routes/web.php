@@ -24,3 +24,7 @@ $router->add('get','/dtlEndereco', function () {
 $router->add('get','/dtlContato', function () {
     return View::render('contato/show');
 });
+
+$router->add('get','/cartorio/formCad', function () {
+    return View::render('cartorio/formCad');
+});

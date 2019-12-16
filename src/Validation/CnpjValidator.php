@@ -5,6 +5,10 @@
 
 namespace Cartorio\Validation;
 
+use App\Models\Cartorio;
+use Cartorio\DataBase\Builder;
+use Cartorio\DataBase\Connection;
+
 class CnpjValidator extends Validator
 {
 
@@ -16,6 +20,16 @@ class CnpjValidator extends Validator
         $this->value = preg_replace("/[^0-9]/", "", $value);
         if (!empty($value) && !preg_match('/^[0-9]{14}$/', $this->value)) {
             $this->addErrors('cnpj');
+        }
+    }
+
+    public function unique()
+    {
+        $cartorio = new Cartorio();
+        if (!empty($this->value)) {
+            if ($cartorio->find($this->value)) {
+                $this->addErrors('unique');
+            }
         }
     }
 
