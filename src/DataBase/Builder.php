@@ -102,7 +102,7 @@ class Builder
      *
      * @return bool
      */
-    public function insert(array $data): bool
+    public function insert(array $data):bool
     {
         $data = $this->fillableData($data);
 
@@ -110,7 +110,6 @@ class Builder
         $values = implode(', :', array_keys($data));
 
         $sql = "INSERT INTO {$this->table} ({$columns}) VALUES (:{$values})";
-
         return $this->connection->prepare($sql)->execute($data);
     }
 

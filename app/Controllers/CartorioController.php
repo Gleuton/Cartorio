@@ -31,18 +31,21 @@ class CartorioController
     public function storage()
     {
         $dataForm = (new InsertRequest())->post();
-        if (isset($dataForm['errors'])){
-            return $dataForm['errors'];
-        }
 
-        return $this->cartorio->insert($dataForm);
+        if (isset($dataForm['errors'])){
+            return $dataForm;
+        }
+        if ($this->cartorio->insert($dataForm)){
+            return $dataForm['cnpj'];
+        }
+        return false;
     }
 
     public function update(string $id)
     {
         $dataForm = (new UpdateRequest())->post();
         if (isset($dataForm['errors'])){
-            return $dataForm['errors'];
+            return $dataForm;
         }
         return $this->cartorio->update($id, $dataForm);
     }
