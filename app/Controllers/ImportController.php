@@ -37,7 +37,7 @@ class ImportController
             $this->cartorio($cartorio);
             $this->tabeliao($cartorio);
             $this->endereco($cartorio);
-            //header("Refresh:0; url=/");
+            header("Refresh:0; url=/");
         }
     }
 
@@ -96,7 +96,6 @@ class ImportController
         $tabeliaData = $this->tabeliao->findBy(
             "WHERE cartorio_cnpj = {$data['cartorio_cnpj']}"
         );
-
 
         if ($tabeliaData) {
             return $this->tabeliao->update($tabeliaData->id_tabeliao, $data);
