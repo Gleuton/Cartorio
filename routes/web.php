@@ -32,3 +32,7 @@ $router->add('get','/cartorio/formCad', function () {
 $router->add('get','/tabeliao/formCad', function () {
     return View::render('tabeliao/formCad');
 });
+
+$router->add('get','/contato/formCad', function () {
+    return View::render('contato/formCad');
+});

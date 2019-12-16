@@ -21,7 +21,7 @@ class Cartorio extends Model
     public function all(string $filter = '')
     {
         $tabeliao = new Tabeliao();
-        $cartorios = parent::all($filter);
+        $cartorios = array_reverse(parent::all($filter));
         foreach ($cartorios as $cartorio) {
             $cartorio->tabeliao = $tabeliao->findByCartorio($cartorio->cnpj)->nome ?? '';
         }
