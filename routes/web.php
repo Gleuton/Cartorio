@@ -28,3 +28,7 @@ $router->add('get','/dtlContato', function () {
 $router->add('get','/cartorio/formCad', function () {
     return View::render('cartorio/formCad');
 });
+
+$router->add('get','/tabeliao/formCad', function () {
+    return View::render('tabeliao/formCad');
+});

@@ -34,7 +34,7 @@ class TabeliaoController
     {
         $dataForm = (new Request())->post();
         if (isset($dataForm['errors'])) {
-            return $dataForm['errors'];
+            return $dataForm;
         }
 
         return $this->tabeliao->insert($dataForm);
@@ -44,7 +44,7 @@ class TabeliaoController
     {
         $dataForm = (new Request())->post();
         if (isset($dataForm['errors'])){
-            return $dataForm['errors'];
+            return $dataForm;
         }
         return $this->tabeliao->update($id, $dataForm);
     }

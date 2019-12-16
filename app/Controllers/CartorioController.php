@@ -32,11 +32,11 @@ class CartorioController
     {
         $dataForm = (new InsertRequest())->post();
 
-        if (isset($dataForm['errors'])){
+        if (isset($dataForm['errors'])) {
             return $dataForm;
         }
-        if ($this->cartorio->insert($dataForm)){
-            return $dataForm['cnpj'];
+        if ($this->cartorio->insert($dataForm)) {
+            return ['cnpj' => $dataForm['cnpj']];
         }
         return false;
     }
@@ -44,7 +44,7 @@ class CartorioController
     public function update(string $id)
     {
         $dataForm = (new UpdateRequest())->post();
-        if (isset($dataForm['errors'])){
+        if (isset($dataForm['errors'])) {
             return $dataForm;
         }
         return $this->cartorio->update($id, $dataForm);

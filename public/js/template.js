@@ -20,3 +20,19 @@ function modal (titulo, body, footer) {
   })
   myModal.modal()
 }
+
+function submit (url, form, callback) {
+  $('.error').html('')
+
+  $.post(url, $(form).serialize(), function (serialize) {
+    if (serialize['errors']) {
+      $.each(serialize['errors'], function (key, value) {
+        let error = $('#' + key).siblings('.error')
+        error.html(value)
+      })
+      return 0;
+    }
+    callback(serialize)
+  })
+
+}
