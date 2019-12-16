@@ -75,6 +75,7 @@ class Builder
         $sql = "SELECT * FROM {$this->table}";
 
         $sql .= ' ' . $filters;
+
         $result = $this->connection->query($sql);
         return $result->fetchObject();
     }

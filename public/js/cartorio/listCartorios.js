@@ -17,7 +17,7 @@ function listCartorios () {
 
   function trcartorio (td) {
     let tr = '<tr>'
-    td.ativo = (td.ativo) ? 'sim' : 'não'
+    td.ativo = (td.ativo === '1') ? 'sim' : 'não'
     td.acoes = acoes(td.cnpj)
     tr += '<td>' + td.nome_fantasia + '</td>'
     tr += '<td>' + td.razao_social + '</td>'

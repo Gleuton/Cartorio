@@ -45,3 +45,5 @@ $router->add('get', '/uf', 'EstadoController@index');
  * cidade
  */
 $router->add('get', '/cidade/uf/(\w+)', 'CidadeController@byUf');
+
+$router->add('post','/xml','ImportController@xml');

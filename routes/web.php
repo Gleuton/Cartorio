@@ -40,3 +40,7 @@ $router->add('get','/contato/formCad', function () {
 $router->add('get','/endereco/formCad', function () {
     return View::render('endereco/formCad');
 });
+
+$router->add('get','/send/xml', function () {
+    return View::render('import/formXml');
+});
