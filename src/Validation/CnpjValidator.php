@@ -17,7 +17,7 @@ class CnpjValidator extends Validator
 
     public function __construct($value)
     {
-        $this->value = preg_replace("/[^0-9]/", "", $value);
+        $this->value = $value;
         if (!empty($value) && !preg_match('/^[0-9]{14}$/', $this->value)) {
             $this->addErrors('cnpj');
         }

@@ -36,3 +36,12 @@ $router->add('get', '/endereco/cartorio/(\d+)', 'EnderecoController@enderecoCart
 $router->add('get', '/endereco/(\d+)','EnderecoController@show');
 $router->add('post', '/endereco','EnderecoController@storage');
 $router->add('post', '/endereco/(\d+)','EnderecoController@update');
+
+/**
+ * uf
+ */
+$router->add('get', '/uf', 'EstadoController@index');
+/**
+ * cidade
+ */
+$router->add('get', '/cidade/uf/(\w+)', 'CidadeController@byUf');

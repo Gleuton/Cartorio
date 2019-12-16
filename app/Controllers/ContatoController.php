@@ -34,7 +34,7 @@ class ContatoController
     {
         $dataForm = (new Request())->post();
         if (isset($dataForm['errors'])) {
-            return $dataForm['errors'];
+            return $dataForm;
         }
 
         return $this->contato->insert($dataForm);
@@ -44,7 +44,7 @@ class ContatoController
     {
         $dataForm = (new Request())->post();
         if (isset($dataForm['errors'])){
-            return $dataForm['errors'];
+            return $dataForm;
         }
         return $this->contato->update($id, $dataForm);
     }

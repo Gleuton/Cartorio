@@ -28,3 +28,15 @@ $router->add('get','/dtlContato', function () {
 $router->add('get','/cartorio/formCad', function () {
     return View::render('cartorio/formCad');
 });
+
+$router->add('get','/tabeliao/formCad', function () {
+    return View::render('tabeliao/formCad');
+});
+
+$router->add('get','/contato/formCad', function () {
+    return View::render('contato/formCad');
+});
+
+$router->add('get','/endereco/formCad', function () {
+    return View::render('endereco/formCad');
+});

@@ -21,8 +21,22 @@ class Tabeliao extends Model
     public function findByCartorio(string $cnpj)
     {
         return $this->findBy(
-            'WHERE cartorio_cnpj = ' . $cnpj.
+            'WHERE cartorio_cnpj = ' . $cnpj .
             ' AND ativo = 1'
         );
+    }
+
+    public function insert(array $data)
+    {
+        $data['nome'] = trim($data['nome']);
+        $data['nome'] = strtolower($data['nome']);
+        $data['nome'] = ucwords($data['nome']);
+        $tabeliao = $this->findBy("WHERE nome = '{$data['nome']}'");
+
+        if ($tabeliao) {
+            $data['ativo'] = 1;
+            return $this->update($tabeliao->id_tabeliao, $data);
+        }
+        return parent::insert($data);
     }
 }
