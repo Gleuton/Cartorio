@@ -64,7 +64,7 @@ class Builder
      */
     public function find(string $id)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE {$this->primaryKey} = {$id}";
+        $sql = "SELECT * FROM {$this->table} WHERE {$this->primaryKey} = '{$id}'";
 
         $result = $this->connection->query($sql);
         return $result->fetchObject();
@@ -102,7 +102,7 @@ class Builder
      *
      * @return bool
      */
-    public function insert(array $data):bool
+    public function insert(array $data): bool
     {
         $data = $this->fillableData($data);
 
@@ -110,6 +110,7 @@ class Builder
         $values = implode(', :', array_keys($data));
 
         $sql = "INSERT INTO {$this->table} ({$columns}) VALUES (:{$values})";
+
         return $this->connection->prepare($sql)->execute($data);
     }
 
@@ -133,7 +134,6 @@ class Builder
 
         $sql = "UPDATE {$this->table} SET {$columns} ";
         $sql .= " WHERE {$this->primaryKey}=:{$this->primaryKey}";
-
         return $this->connection->prepare($sql)->execute($data);
     }
 

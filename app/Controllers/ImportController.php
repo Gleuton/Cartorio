@@ -32,8 +32,7 @@ class ImportController
         $file_tmp = $_FILES['xml']['tmp_name'];
         $this->cartorios = simplexml_load_file($file_tmp);
 
-        foreach ($this->cartorios as  $cartorio) {
-
+        foreach ($this->cartorios as $cartorio) {
             $this->cartorio($cartorio);
             $this->tabeliao($cartorio);
             $this->endereco($cartorio);
@@ -52,14 +51,19 @@ class ImportController
             unset($data['cnpj']);
             return $this->cartorio->update($cartorio->documento, $data);
         }
+
         return $this->cartorio->insert($data);
     }
 
     private function endereco($cartorio)
     {
-        $data['endereco'] = filter_var($cartorio->endereco,FILTER_SANITIZE_STRING);
+        $data['endereco'] = filter_var(
+            $cartorio->endereco,
+            FILTER_SANITIZE_STRING
+        );
+
         $data['cep'] = $cartorio->cep;
-        $data['bairro'] = filter_var($cartorio->bairro,FILTER_SANITIZE_STRING);
+        $data['bairro'] = filter_var($cartorio->bairro, FILTER_SANITIZE_STRING);
         $data['cartorio_cnpj'] = $cartorio->documento;
 
         $municipio = filter_var($cartorio->cidade, FILTER_SANITIZE_STRING);
@@ -67,7 +71,8 @@ class ImportController
         $cidade = $this->cidade->findBy(
             "WHERE cidade = '{$municipio}'"
         );
-        if(!$cidade){
+
+        if (!$cidade) {
             $dataCidade['cidade'] = $municipio;
             $dataCidade['estado_uf'] = strtoupper($cartorio->uf);
             $this->cidade->insert($dataCidade);
