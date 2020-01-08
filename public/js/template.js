@@ -32,9 +32,11 @@ function submit (url, form, callback) {
       })
       return 0
     }
-    if (callback) {
-      callback(serialize)
+    if (!callback) {
+      location.reload();
+      return 1;
     }
+    callback(serialize)
   })
 
 }

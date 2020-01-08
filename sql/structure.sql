@@ -27,6 +27,7 @@ CREATE TABLE `tb_cartorio` (
   `razao_social` varchar(250) NOT NULL,
   `cnpj` varchar(14) NOT NULL,
   `ativo` tinyint(4) NOT NULL DEFAULT '1',
+  `create_dt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`cnpj`),
   UNIQUE KEY `cnpj_UNIQUE` (`cnpj`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
